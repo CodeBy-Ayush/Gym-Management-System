@@ -241,11 +241,11 @@
                     <button onclick="openPlanModal('{{ client.id }}', '{{ client.name }}')">Assign Plan</button>
                 </div>
                 {% else %}
-                <p>You have not been assigned any clients yet.</p>
+                <p>You have not been assigned any client yet.</p>
                 {% endfor %}
             </div>
             <div class="card">
-                <div class="card-header">Activity</div>
+                <div class="card-header">Activities</div>
                 {% for item in activities %}
                     {{ activity_item(item) }}
                 {% else %}
@@ -306,5 +306,6 @@
         }
     </script>
 </body>
+
 
 </html>
