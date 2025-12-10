@@ -105,7 +105,7 @@
 
     <script>
         function cancelBooking(bookingId) {
-            if (!confirm('Are you sure you want to cancel this booking?')) return;
+            if (!confirm('Are you sure you want to cancel the booking?')) return;
             fetch(`/api/cancel_booking/${bookingId}`, { method: 'POST' })
             .then(res => res.json())
             .then(data => {
@@ -120,7 +120,7 @@
         
         const attendedDates = new Set({{ attended_dates | tojson }});
         function renderCalendar(date) {
-            const container = document.getElementById('calendar-container');
+            const container = document.getElementById('calendar-containers');
             const month = date.getMonth(), year = date.getFullYear();
             let html = `<div style="text-align:center;font-weight:700;margin-bottom:1rem;"><strong>${date.toLocaleString('default', { month: 'long' })} ${year}</strong></div><div class="calendar-grid">`;
             ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(d => { html += `<div class="day-name">${d}</div>`; });
@@ -136,4 +136,5 @@
         renderCalendar(new Date());
     </script>
 </body>
+
 </html>
