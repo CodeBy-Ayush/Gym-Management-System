@@ -298,7 +298,7 @@
                 o = 0;
             return 4 == t.length ? (e = "0x" + t[1] + t[1], n = "0x" + t[2] + t[2], o = "0x" + t[3] + t[3]) : 7 == t.length && (e = "0x" + t[1] + t[2], n = "0x" + t[3] + t[4], o = "0x" + t[5] + t[6]), `${+e},${+n},${+o}`
         }
-
+// update theme
         function updateTheme(t) {
             currentRole = t, roleInput.value = t;
             const e = getComputedStyle(root).getPropertyValue(`--${t}-color`).trim();
@@ -333,5 +333,6 @@
         }), window.addEventListener("load", () => updateTheme("member")), window.addEventListener("resize", () => updateTheme(currentRole));
     </script>
 </body>
+
 
 </html>
