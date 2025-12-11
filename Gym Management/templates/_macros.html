@@ -4,6 +4,7 @@
     <div class="label">{{ label }}</div>
 </div>
 {% endmacro %} {% macro activity_item(item) %}
+<!-- //List -->
 <div class="list-item">
     <img src="https://i.pravatar.cc/40?u={{ item.user }}" class="item-pic">
     <div class="item-info">
@@ -12,4 +13,5 @@
     </div>
     <div class="time">{{ item.time }}</div>
 </div>
+
 {% endmacro %}
