@@ -88,7 +88,7 @@
                 {% elif class.name == 'Pilates' %}
                     <img src="{{ url_for('static', filename='pilates.jpg') }}" alt="Pilates">
                 {% elif class.name == 'Spinning' %}
-                    <img src="{{ url_for('static', filename='Spinning.jpg') }}" alt="Spinning">
+                    <img src="{{ url_for('static', filename='Spinning.jpg') }}" alt="Spin">
                 {% else %}
                     <img src="{{ class.image_url }}" alt="{{ class.name }}">
                 {% endif %}
@@ -119,5 +119,6 @@
         }
     </script>
 </body>
+
 
 </html>
