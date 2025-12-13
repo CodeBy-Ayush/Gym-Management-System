@@ -1,6 +1,6 @@
 # ==============================================================================
 # SMART GYM MANAGEMENT SYSTEM - FINAL & COMPLETE BACKEND (app.py)
-# DSA Project
+# DSA Project To Connect Bcakend 
 # ==============================================================================
 
 import os
@@ -12,7 +12,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import desc, func
 from collections import deque
 
-# ----------------- App Initialization & Configuration -----------------
+# ----------------- App Initialization & Configuration ------------------
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the_ultimate_secret_key_for_dsa_project_v12_final'
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -20,11 +20,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'gy
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.permanent_session_lifetime = datetime.timedelta(days=7)
 
-# ----------------- Extensions & Custom Filters -----------------
+# ----------------- Extensions & Custom Filters --------------------------
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
-# ----------------- DATABASE MODELS -----------------
+# ----------------- DATABASE MODELS ---------------------------------------
 trainer_client_association = db.Table('trainer_client',
     db.Column('trainer_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('client_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
@@ -93,7 +93,7 @@ class ActivityLog(db.Model):
     message = db.Column(db.String(255), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-# ----------------- HELPER FUNCTIONS -----------------
+# ----------------- HELPER FUNCTIONS ------------------------------------
 def get_current_user():
     return User.query.get(session.get('user_id')) if 'user_id' in session else None
 
@@ -107,7 +107,7 @@ def time_ago(date):
 def log_activity(user_name, message):
     db.session.add(ActivityLog(user_name=user_name, message=message))
 
-# ----------------- CORE & AUTHENTICATION ROUTES -----------------
+# ----------------- CORE & AUTHENTICATION ROUTES ------------------------
 @app.route('/')
 def home():
     if 'user_id' in session: return redirect(url_for(f"{session.get('role', 'member')}_dashboard"))
@@ -139,7 +139,7 @@ def signup():
 def logout():
     session.clear(); return redirect(url_for('home'))
 
-# ----------------- DASHBOARD & FUNCTIONAL ROUTES -----------------
+# ----------------- DASHBOARD & FUNCTIONAL ROUTES ------------------------------------
 @app.route('/member_dashboard')
 def member_dashboard():
     user = get_current_user()
@@ -261,7 +261,7 @@ def control():
 
 
 
-# ----------------- API ROUTES (FOR JS) -----------------
+# ----------------- API ROUTES (FOR JS) ------------------------------------------------
 @app.route('/api/remove_user/<int:user_id>', methods=['POST'])
 def remove_user(user_id):
     admin = get_current_user()
@@ -333,7 +333,7 @@ def api_mark_attendance():
     booking.status = status; log_activity(trainer.name, f"marked {booking.member.name} as {status.lower()} for '{booking.class_info.name}'"); db.session.commit()
     return jsonify({'success': True, 'message': 'Attendance updated'})
 
-# ----------------- CLI COMMAND TO INIT DB -----------------
+# ----------------- CLI COMMAND TO INIT DB -----------------------------------------------------------------
 @app.cli.command("init-db")
 def init_db_command():
     with app.app_context():
@@ -370,6 +370,7 @@ def init_db_command():
         db.session.commit()
         print("Database initialized successfully with sample data.")
 
-# ----------------- Main Execution -----------------
+# ----------------- Main Execution -------------------------------
 if __name__ == '__main__':
+
     app.run(debug=True, port=5001)
