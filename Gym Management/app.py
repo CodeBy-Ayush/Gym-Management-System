@@ -2,7 +2,7 @@
 # SMART GYM MANAGEMENT SYSTEM - FINAL & COMPLETE BACKEND (app.py)
 # DSA Project To Connect Bcakend 
 # ==============================================================================
-
+#Backend Connection 
 import os
 import json
 import datetime
@@ -12,7 +12,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import desc, func
 from collections import deque
 
-# ----------------- App Initialization & Configuration ------------------
+# ----------------- App Initialization & Configurations ------------------
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the_ultimate_secret_key_for_dsa_project_v12_final'
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -20,11 +20,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'gy
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.permanent_session_lifetime = datetime.timedelta(days=7)
 
-# ----------------- Extensions & Custom Filters --------------------------
+# ----------------- Extensions & Custom Filter --------------------------
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
-# ----------------- DATABASE MODELS ---------------------------------------
+# ----------------- DATABASE MODEL  ---------------------------------------
 trainer_client_association = db.Table('trainer_client',
     db.Column('trainer_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('client_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
@@ -153,7 +153,7 @@ def trainer_dashboard():
     if not trainer or trainer.role != 'trainer':
         return redirect(url_for('home'))
 
-    # Fetch clients assigned to this trainer
+    # Fetch clients assign to this trainer
     clients = trainer.clients.order_by(User.name).all()
     client_ids = [c.id for c in clients]
 
@@ -374,3 +374,4 @@ def init_db_command():
 if __name__ == '__main__':
 
     app.run(debug=True, port=5001)
+
