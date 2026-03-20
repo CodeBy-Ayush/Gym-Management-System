@@ -12,7 +12,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import desc, func
 from collections import deque
 
-# ----------------- App Initialization & Configurations ------------------
+# ----------------- App Initialization & Configurations --------------------
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the_ultimate_secret_key_for_dsa_project_v12_final'
 basedir = os.path.abspath(os.path.dirname(__file__))
