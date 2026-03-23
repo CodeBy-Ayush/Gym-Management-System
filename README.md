@@ -1,4 +1,4 @@
-## 🏋️‍♂️ Gym Management System (Flask)
+# 🏋️‍♂️ Gym Management System (Flask)
 
 The **Gym Management System** is a web-based application built using **Flask, HTML, CSS, and JavaScript**.  
 It helps admins manage gym members, trainers, membership plans, attendance, and payments in a simple and fast interface.
