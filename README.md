@@ -5,7 +5,7 @@ It helps admins manage gym members, trainers, membership plans, attendance, and 
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
 - ✔ **Add / Update / Delete Members**
 - ✔ **Trainer Management**
